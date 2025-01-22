@@ -177,7 +177,7 @@ Our proposed challenge is strongly inspired by the HEAR benchmark, which assesse
 
 **Efficient system:** We propose an open-sourced, efficient evaluation system, incorperating a simple pipline that can be run without any prequisites.
 
-### SUPERB: Speech processing Universal PERformance Benchmark
+### SUPERB: Speech processing Universal Performance Benchmark
 
 SUPERB and its derivatives primarily focus on speech processing tasks using self-supervised learning (SSL) representations. In recent years, SUPERB also included additional tasks such as emotion recognition and sound codecs, but notably, it does not include environmental audio or music related tasks.
 
