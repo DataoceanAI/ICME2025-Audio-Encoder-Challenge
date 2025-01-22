@@ -20,6 +20,39 @@ The challenge consists of two tracks, each evaluating the pre-trained models in 
 
 **Track B: Unparameterized Evaluation.** Pre-trained model embeddings will be used directly for K-nearest neighbor (KNN) classification without training. This track aims to evaluate the inherent quality of the audio representations without any fine-tuning. While this approach may not always yield the highest performance in real-world applications, it serves as a rigorous test of the fundamental representational power of the embeddings. By avoiding parameterized layers, this track provides a clear view of how well the model captures essential features of the audio data.
 
+### Table 1: Proposed Benchmark Datasets
+
+| **Domain**      | **Dataset**                                             | **Task Type**                | **Metric**   | **n-classes** | **Track B** |
+|-----------------|---------------------------------------------------------|------------------------------|--------------|---------------|-------------|
+| **Speech**      | Speech Commands                                         | Keyword spotting             | Acc          | 30            | ✓           |
+|                 | LibriCount                                              | Speaker counting             | Acc          | 11            | ✓           |
+|                 | VoxLingua107                                            | Language identification      | Acc          | 33            | ✓           |
+|                 | VoxCeleb1                                               | Speaker identification       | Acc          | 1251          | ✓           |
+|                 | LibriSpeech                                             | Gender classification        | Acc          | 2             | ✓           |
+|                 | Fluent Speech Commands                                  | Intent classification        | Acc          | 248           | ✓           |
+|                 | VocalSound                                              | Non-speech sounds            | Acc          | 6             | ✓           |
+|                 | CREMA-D                                                 | Emotion recognition          | Acc          | 5             | ✓           |
+|                 | LibriSpeech-Phoneme                                     | Phoneme recognition          | Acc          | 39            | ✓           |
+|                 | speechocean762                                          | Phoneme pronunciation        | MSE          | 3             | ✗           |
+|                 | ASV2015                                                 | Spoofing detection           | EER          | 2             | ✓           |
+| **Sound**       | ESC-50                                                  | Environment classification   | Acc          | 50            | ✓           |
+|                 | FSD50k                                                  | Sound event detection        | mAP          | 200           | ✗           |
+|                 | UrbanSound 8k                                           | Urban sound classification   | Acc          | 10            | ✓           |
+|                 | DESED                                                   | Sound event detection        | Segment-F1   | 10            | ✓           |
+|                 | FSD18-Kaggle                                            | Sound event detection        | mAP          | 41            | ✗           |
+|                 | Clotho                                                  | Sound retrieval              | Recall@1     | -             | ✗           |
+|                 | Inside/outside car†                                     | Sound event detection        | Acc          | 2             | ✓           |
+|                 | Finger snap sound†                                      | Sound event detection        | Acc          | 2             | ✓           |
+|                 | Key scratching car†                                     | Sound event detection        | Acc          | 2             | ✓           |
+|                 | Subway broadcast†                                       | Sound event detection        | Acc          | 2             | ✓           |
+|                 | RealUser sounds†                                        | Sound event detection        | mAP          | 14            | ✗           |
+|                 | LiveEnv sounds†                                         | Sound event detection        | mAP          | 18            | ✗           |
+| **Music**       | MAESTRO                                                 | Note classification          | Acc          | 88            | ✓           |
+|                 | GTZAN Genre                                             | Genre classification         | Acc          | 10            | ✓           |
+|                 | NSynth-Instruments                                      | Instruments Classification   | Acc          | 11            | ✓           |
+|                 | NSynth-Pitch                                            | Pitches Classification       | Acc          | 128           | ✓           |
+|                 | Free Music Archive Small                                | Music genre classification   | Acc          | 8             | ✓           |
+
 ### Training Dataset
 
 The challenge places a significant emphasis on data collection and utilization, which is a crucial component of the competition. The organizers do not prescribe a specific training dataset. Instead, participants are free to use any data for training, as long as it meets the following conditions:
@@ -33,6 +66,17 @@ The challenge places a significant emphasis on data collection and utilization, 
 The datasets, outlined in Table 1, comprise a diverse range of audio data spanning multiple domains, including human voice, environmental sounds, and music. We utilize each dataset's native train-test split to fine-tune and test participant-submitted models. All datasets are open-sourced, with six new datasets focusing on real-world industrial scenarios provided by the challenge organizers themselves, marked with † in Table 1.
 
 Table 2 provides an overview of the datasets introduced by the challenge organizers. These datasets are designed to reflect real-world industrial scenarios, enriching the diversity and practical applicability of the challenge. Note that a portion of these six datasets will have their ground truth labels hidden to participants.
+
+### Table 2: Datasets Released by the Challenge Organizers
+
+| **Dataset**           | **Size**  | **Description** | **Hidden**  |
+|-----------------------|-----------|-----------------|-------------|
+| Inside/outside car     | 15k samples | Security threat prevention by distinguishing environments | ✗ |
+| Finger snap sound      | 15k samples | Wake-up word alternative for smart speakers               | ✗ |
+| Key scratching car     | 5k samples  | Detecting car vandalism through key scratching sounds     | ✗ |
+| Subway broadcast       | 125 hours  | Noise canceling in response to subway announcements       | ✓ |
+| RealUser sound         | 105k samples | Diverse real-world sound events captured by users         | ✓ |
+| LiveEnv sound          | 25k samples  | Authentic environmental sounds from various locations     | ✓ |
 
 ## Submission Guide
 
