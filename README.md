@@ -107,7 +107,7 @@ The performance metrics for each task are normalized to a 0-1 scale, and the fin
 
 Each task in Table 1, i.e. Ti, has an associated metric Mi (e.g., accuracy, EER, mAP, F1). To normalize these metrics, we use the following formula:
 
-![formula](QianJianTec1737530284661.png)
+![formula](3.png)
 
 where Mˆi is the normalized metric for task Ti, and Mi is the raw metric value for task Ti. Mimin and Mimax are the minimum and maximum possible values of the metric Mi, respectively.
 
@@ -121,7 +121,7 @@ For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their Mimin
 
 The final score for each participant for Track A and Track B is calculated as the weighted average of the normalized metrics across all tasks applicable to the respective task, where the weight is determined by the size of the test set for each task. This approach ensures that tasks with larger test sets have a greater impact on the final score, reflecting their significance in evaluating the model's performance. The final scores \(S_A\) and \(S_B\) for Track A and Track B are given by:
 
-![formula](QianJianTec1737530599446.png)
+![formula](4.png)
 
 where \(N_{\text{task}}\) is the total number of tasks applicable to the respective task, \(n_i\) is the size of the test set for task \(T_i\), and \(\hat{M}_i\) is the normalized metric for task \(T_i\).
 
