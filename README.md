@@ -20,6 +20,13 @@ The challenge consists of two tracks, each evaluating the pre-trained models in 
 
 **Track B: Unparameterized Evaluation.** Pre-trained model embeddings will be used directly for K-nearest neighbor (KNN) classification without training. This track aims to evaluate the inherent quality of the audio representations without any fine-tuning. While this approach may not always yield the highest performance in real-world applications, it serves as a rigorous test of the fundamental representational power of the embeddings. By avoiding parameterized layers, this track provides a clear view of how well the model captures essential features of the audio data.
 
+---
+1https://github.com/jimbozhang/xares-template/blob/main/examples/dasheng/dasheng_encoder.py
+
+2https://github.com/jimbozhang/xares-template/blob/main/examples/wav2vec2/wav2vec2_encoder.py
+
+3https://github.com/jimbozhang/xares
+
 ### Table 1: Proposed Benchmark Datasets
 
 | **Domain**      | **Dataset**                                             | **Task Type**                | **Metric**   | **n-classes** | **Track B** |
@@ -104,9 +111,13 @@ Each task in Table 1, i.e. Ti, has an associated metric Mi (e.g., accuracy, EER,
 \hat{M}_i = \frac{M_i - M_i^{\text{min}}}{M_i^{\text{max}} - M_i^{\text{min}}}
 \]
 
-where \(\hat{M}_i\) is the normalized metric for task \(T_i\), and \(M_i\) is the raw metric value for task \(T_i\). \(M_i^{\text{min}}\) and \(M_i^{\text{max}}\) are the minimum and maximum possible values of the metric \(M_i\), respectively.
+where Mˆi is the normalized metric for task Ti, and Mi is the raw metric value for task Ti. Mimin and Mimax are the minimum and maximum possible values of the metric Mi, respectively.
 
-For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their \(M_i^{\text{min}}\) and \(M_i^{\text{max}}\) are 0 and 1, respectively; mAP ranges from 0 to 100, so for mAP tasks, \(M_i^{\text{min}} = 0\) and \(M_i^{\text{max}} = 100\).
+For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their Mimin and Mimax are 0 and 1,respectively; mAP ranges from 0 to 100, so for mAP tasks, Mimin = 0 and Mimax = 100.
+
+---
+
+4https://github.com/jimbozhang/xares-template.git
 
 ### Final Score and Ranking
 
@@ -132,7 +143,15 @@ This Challenge is organized by teams from three institutions: Xiaomi Corporation
 
 **Dr. Wenwu Wang** is a Professor in Signal Processing and Machine Learning, University of Surrey, UK. He is also an AI Fellow at the Surrey Institute for People Centred Artificial Intelligence. His current research interests include signal processing, machine learning and perception, artificial intelligence, machine audition (listening), and statistical anomaly detection. He has (co)-authored over 300 papers in these areas. He has been recognized as a (co-)author or (co)-recipient of more than 15 accolades, including the 2022 IEEE Signal Processing Society Young Author Best Paper Award, ICAUS 2021 Best Paper Award, DCASE 2020 and 2023 Judge’s Award, DCASE 2019 and 2020 Reproducible System Award, and LVA/ICA 2018 Best Student Paper Award. He is an Associate Editor (2020-2025) for IEEE/ACM Transactions on Audio Speech and Language Processing, and an Associate Editor (2024-2026) for IEEE Transactions on Multimedia. He was a Senior Area Editor (2019-2023) and Associate Editor (2014-2018) for IEEE Transactions on Signal Processing. He is the elected Chair (2023-2024) of IEEE Signal Processing Society (SPS) Machine Learning for Signal Processing Technical Committee, a Board Member (2023-2024) of IEEE SPS Technical Directions Board, the elected Chair (2025-2027) and Vice Chair (2022-2024) of the EURASIP Technical Area Committee on Acoustic Speech and Music Signal Processing, an elected Member (2021-2026) of the IEEE SPS Signal Processing Theory and Methods Technical Committee. He has been on the organising committee of INTERSPEECH 2022, IEEE ICASSP 2019 & 2024, IEEE MLSP 2013 & 2024, and SSP 2009. He is Technical Program Co-Chair of IEEE MLSP 2025. He has been an invited Keynote or Plenary Speaker on more than 20 international conferences and workshops.
 
-**Dataocean AI Inc.**, founded in 2005, is a global professional service provider specializing in AI training data. The enterprise is dedicated to delivering data products and solutions across core AI fields, including Text-to-Speech, Automatic Speech Recognition, Natural Language Processing, Lexicon, Computer Vision, and Multi-modal technologies.
+**Dataocean AI Inc.** is a global data collection and labeling services provider that combines technology with
+a diverse network of millions data contributors, scientists, and engineers. The company delivers cutting-edge data
+solutions across multiple domains, including text, audio, image, and multimodal for foundation models or GenAI
+applications. With over 1,600 off-the-shelf datasets and a proven track record of delivering thousands of customized
+data projects, Dataocean AI have been trusted by of over 1,000 global AI leading enterprises and institutions. The
+company cover more than 200 languages around the world. Its self-developed data platform ensures precision and
+efficiency in tasks such as collection, cleansing, labeling and evaluation. With nearly two decades of experience,
+Dataocean AI has established itself as a trusted partner in the AI ecosystem, consistently delivering excellence and
+earning global recognition
 
 ## Challenge Schedule
 
