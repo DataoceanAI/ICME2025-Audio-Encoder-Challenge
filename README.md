@@ -122,7 +122,7 @@ For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their Mimin
 The final score for each participant for Track A and Track B is calculated as the weighted average of the normalized metrics across all tasks applicable to the respective task, where the weight is determined by the size of the test set for each task. This approach ensures that tasks with larger test sets have a greater impact on the final score, reflecting their significance in evaluating the model's performance. The final scores \(S_A\) and \(S_B\) for Track A and Track B are given by:
 
 $$
-S_{\text{track}} = \frac{\sum_{i=1}^{N_{\text{task}}} n_i \hat{M}_i}{\sum_{i=1}^{N_{\text{task}}} n_i}
+\hat{M}_i = \frac{M_i - M_i^{\text{min}}}{M_i^{\text{max}} - M_i^{\text{min}}}
 $$
 
 where \(N_{\text{task}}\) is the total number of tasks applicable to the respective task, \(n_i\) is the size of the test set for task \(T_i\), and \(\hat{M}_i\) is the normalized metric for task \(T_i\).
