@@ -157,9 +157,12 @@ earning global recognition
 
 The Challenge will follow this schedule:
 
-- February 7, 2025: Challenge announcement and release of evaluation details.
-- April 30, 2025: Submission deadline.
-- May 27, 2025: Results announcement.
+| Date           | Activity                                      |
+|----------------|-----------------------------------------------|
+| February 7, 2025 | Challenge announcement and release of evaluation details. |
+| April 30, 2025  | Submission deadline.                          |
+| May 20, 2025    | Notification of acceptance.                   |
+| May 27, 2025    | Results announcement.                         |
 
 ## Related Work
 
