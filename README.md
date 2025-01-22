@@ -107,10 +107,6 @@ The performance metrics for each task are normalized to a 0-1 scale, and the fin
 
 Each task in Table 1, i.e. Ti, has an associated metric Mi (e.g., accuracy, EER, mAP, F1). To normalize these metrics, we use the following formula:
 
-\[
-\hat{M}_i = \frac{M_i - M_i^{\text{min}}}{M_i^{\text{max}} - M_i^{\text{min}}}
-\]
-
 where Mˆi is the normalized metric for task Ti, and Mi is the raw metric value for task Ti. Mimin and Mimax are the minimum and maximum possible values of the metric Mi, respectively.
 
 For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their Mimin and Mimax are 0 and 1,respectively; mAP ranges from 0 to 100, so for mAP tasks, Mimin = 0 and Mimax = 100.
