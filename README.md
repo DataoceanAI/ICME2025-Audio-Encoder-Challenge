@@ -19,11 +19,11 @@ The challenge consists of two tracks, each evaluating the pre-trained models in 
 **Track B: Unparameterized Evaluation.** Pre-trained model embeddings will be used directly for K-nearest neighbor (KNN) classification without training. This track aims to evaluate the inherent quality of the audio representations without any fine-tuning. While this approach may not always yield the highest performance in real-world applications, it serves as a rigorous test of the fundamental representational power of the embeddings. By avoiding parameterized layers, this track provides a clear view of how well the model captures essential features of the audio data.
 
 ---
-1<https://github.com/jimbozhang/xares-template/blob/main/examples/dasheng/dasheng_encoder.py>
+1. <https://github.com/jimbozhang/xares-template/blob/main/examples/dasheng/dasheng_encoder.py>
 
-2<https://github.com/jimbozhang/xares-template/blob/main/examples/wav2vec2/wav2vec2_encoder.py>
+2. <https://github.com/jimbozhang/xares-template/blob/main/examples/wav2vec2/wav2vec2_encoder.py>
 
-3<https://github.com/jimbozhang/xares>
+3. <https://github.com/jimbozhang/xares>
 
 ### Table 1: Proposed Benchmark Datasets
 
@@ -113,7 +113,7 @@ For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their Mimin
 
 ---
 
-4<https://github.com/jimbozhang/xares-template.git>
+4. <https://github.com/jimbozhang/xares-template.git>
 
 ### Final Score and Ranking
 
