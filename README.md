@@ -85,7 +85,7 @@ Table 2 provides an overview of the datasets introduced by the challenge organiz
 
 ## Registration Guide
 
-Please use this link to fill out the registration form：
+Please use this link to fill out the registration form by April 1st：
 <https://forms.gle/VGgRQdPLs9f72UM8A>
 
 For any other information you might need，please send Email to: <2025icme-aecc@dataoceanai.com>
