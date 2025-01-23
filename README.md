@@ -1,22 +1,10 @@
 ## International Conference on Multimedia & Expo 2025-AEC Challenge
 
-Junbo Zhang
-, Heinrich Dinkel
-, Wenwu Wang
-, Chenyu Liu
-, Qiong Song
-, Helen Wang
-,
-Yongqing Wang
-, Zhiyong Yan
-, Xiaofeng Xin
-, Ke Li
-, Yujun Wang
-, Bin Wang
+Junbo Zhang, Heinrich Dinkel, Wenwu Wang, Chenyu Liu, Qiong Song, Helen Wang, Yongqing Wang, Zhiyong Yan, Xiaofeng Xin, Ke Li, Yujun Wang, Bin Wang
 
 Xiaomi Corporation, China, University of Surrey, UK, Dataocean AI Inc., USA
 
-{zhangjunbo1, dinkelheinrich}@xiaomi.com; w.wang@surrey.ac.uk；wangxiaoman@dataoceanai.com
+<zhangjunbo1@xiaomi.com>; <dinkelheinrich@xiaomi.com>; <w.wang@surrey.ac.uk>; <wangxiaoman@dataoceanai.com>
 
 ## Abstract
 
