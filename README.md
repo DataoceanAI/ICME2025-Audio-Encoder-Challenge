@@ -1,3 +1,22 @@
+## International Conference on Multimedia & Expo 2025-AEC Challenge
+
+Junbo Zhang
+, Heinrich Dinkel
+, Wenwu Wang
+, Chenyu Liu
+, Qiong Song
+, Helen Wang
+,
+Yongqing Wang
+, Zhiyong Yan
+, Xiaofeng Xin
+, Ke Li
+, Yujun Wang
+, Bin Wang
+
+Xiaomi Corporation, China, University of Surrey, UK, Dataocean AI Inc., USA
+{zhangjunbo1, dinkelheinrich}@xiaomi.com; w.wang@surrey.ac.uk；wangxiaoman@dataoceanai.com
+
 ## Abstract
 
 This challenge aims to establish a benchmark for evaluating the capabilities of audio encoders, especially in the context of multi-task learning and real-world applications. Participants are invited to submit pre-trained audio encoders that map raw waveforms to continuous embeddings. These encoders will be assessed across a diverse range of tasks spanning voice, environmental sounds, and music, with a focus on their effectiveness as components in larger systems. The challenge features two tracks: Track A for parameterized evaluation, and Track B for parameter-free evaluation. To emphasize practical relevance, the organizers are releasing several novel, open-source datasets featuring diverse audio recordings from real-world scenarios and users. This challenge provides a critical platform for benchmarking and advancing the state-of-the-art in audio encoder design.
