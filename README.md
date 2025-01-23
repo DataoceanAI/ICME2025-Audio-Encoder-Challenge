@@ -124,13 +124,13 @@ For instance, the accuracy, EER, and F1 scores range from 0 to 1, so their Mimin
 
 ### Final Score and Ranking
 
-The final score for each participant for Track A and Track B is calculated as the weighted average of the normalized metrics across all tasks applicable to the respective task, where the weight is determined by the size of the test set for each task. This approach ensures that tasks with larger test sets have a greater impact on the final score, reflecting their significance in evaluating the model's performance. The final scores \(S_A\) and \(S_B\) for Track A and Track B are given by:
+The final score for each participant for Track A and Track B is calculated as the weighted average of the normalized metrics across all tasks applicable to the respective task, where the weight is determined by the size of the test set for each task. This approach ensures that tasks with larger test sets have a greater impact on the final score, reflecting their significance in evaluating the model's performance. The final scores SA and SB for Track A and Track B are given by:
 
 ![描述图片内容](8.png)
 
-where \(N_{\text{task}}\) is the total number of tasks applicable to the respective task, \(n_i\) is the size of the test set for task \(T_i\), and \(\hat{M}_i\) is the normalized metric for task \(T_i\).
+where Ntask is the total number of tasks applicable to the respective task, ni is the size of the test set for task task Ti, and Mˆi is the normalized metric for task Ti.
 
-Participants are ranked within each track based on their final scores, \(S_A\) and \(S_B\), respectively. The overall performance of the participants will be showcased in two separate leaderboards, one for Track A and one for Track B, to accurately reflect competencies in both parameterized and unparameterized evaluation methodologies.
+Participants are ranked within each track based on their final scores, SA and SB, respectively. The overall performance of the participants will be showcased in two separate leaderboards, one for Track A and one for Track B, to accurately reflect competencies in both parameterized and unparameterized evaluation methodologies.
 
 ## Challenge Organizers
 
