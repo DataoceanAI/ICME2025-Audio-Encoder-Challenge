@@ -1,6 +1,6 @@
 ## International Conference on Multimedia & Expo 2025-AEC Challenge
 
-*Junbo Zhang*, *Heinrich Dinkel*, *Wenwu Wang*, *Qiong Song*, *Ke Li*, *Xiaofeng Xin*, *Helen Wang*, *Luan Jian*
+*Junbo Zhang*, *Heinrich Dinkel*, *Wenwu Wang*, *Yadong Niu*,*Yujun Wang*, *Jian Luan*, *Ke Li*, *Qiong Song*, *Xiaofeng Xin*, *Helen Wang*
 
 Xiaomi Corporation, China, University of Surrey, UK, Dataocean AI Inc., USA
 
