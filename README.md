@@ -83,6 +83,13 @@ Table 2 provides an overview of the datasets introduced by the challenge organiz
 | RealUser sound         | 105k samples | Diverse real-world sound events captured by users         | ✓ |
 | LiveEnv sound          | 25k samples  | Authentic environmental sounds from various locations     | ✓ |
 
+## Registration Guide
+
+Please use this link to fill out the registration form：
+<https://forms.gle/VGgRQdPLs9f72UM8A>
+
+For any other information you might need，please send Email to: <2025icme-aecc@dataoceanai.com>
+
 ## Submission Guide
 
 Participants are required to submit a pre-trained model encapsulated within the specified API. The model should accept a single-channel audio signal, represented as a PyTorch tensor with shape [B, T], where B denotes the batch size and T represents the number of samples in the time domain. The model should output a frame-level prediction of shape [B, T', D], where T' can be different from the input T and D is the embedding dimension defined by the participant.
@@ -95,7 +102,7 @@ The submission steps are as follows:
 
 1. Clone the audio encoder template from the GitHub repository.
 2. Implement your own audio encoder following the instructions in `README.md` within the cloned repository. The implementation must pass all checks in `audio_encoder_checker.py` provided in the repository.
-3. Before the submission deadline, email the organizers a ZIP file containing the complete repository. In the body of the email, please include the names, email addresses, and affiliations of all team members. Additionally, please attach a technical report paper (PDF format) not exceeding 6 pages describing your implementation. Pre-trained model weights can either be included in the ZIP file or downloaded automatically from external sources (e.g., HuggingFace) during runtime. If choosing the latter approach, please implement the automatic downloading mechanism in your encoder implementation.
+3. Please email a ZIP file containing the complete repository to <2025icme-aecc@dataoceanai.com> with subject of "Team Name-ICME2025". Additionally, we encourage you to submit technical report paper (PDF format) not exceeding 6 pages describing your implementation by Apr.30.
 
 ## Evaluation and Ranking
 
