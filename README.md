@@ -174,6 +174,8 @@ efficiency in tasks such as collection, cleansing, labeling and evaluation. With
 Dataocean AI has established itself as a trusted partner in the AI ecosystem, consistently delivering excellence and
 earning global recognition
 
+**Helen Wang**is marketing head of Dataocean AI，mainly responsible for open data community and challenge operation.
+
 ## Challenge Schedule
 
 The Challenge will follow this schedule:
