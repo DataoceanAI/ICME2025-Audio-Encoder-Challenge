@@ -4,7 +4,8 @@
 
 The **ICME 2025 Audio Encoder Capability Challenge** aims to evaluate audio encoders in multi-task learning and real-world applications. It is strongly inspired by the [HEAR benchmark](https://hearbenchmark.com/), with several enhancements introduced: diverse task set, real-world applications, both of parameterized evaluation and parameter-free evaluation, and an new open-sourced, efficient evaluation system.
 
-Participants submit pre-trained encoders that convert raw audio waveforms into continuous embeddings. These encoders will be tested across diverse tasks including **speech, environmental sounds, and music**, with a focus on real-world usability.
+Participants submit pre-trained encoders that convert raw audio waveforms into continuous embeddings. These encoders will be tested across diverse tasks including **speech, environmental sounds, and music**, with a focus on real-world usability, using an [open-source evaluation system](https://github.com/jimbozhang/xares).
+Participants may test and optimize models independently, but the final rankings will be based on the evaluations by the organizers. This challenge aims to advance the state-of-the-art in continuous audio representation learning.
 
 ## How to Participate
 
@@ -37,7 +38,7 @@ Instead, participants are free to use any data for training, as long as it meets
 - Any data in Table.1 must be excluded from the training data.
 - Data derived from or augmented based on Table.1, either directly or indirectly, is not permitted for training.
 
-### Table 1: Testing Datasets
+### Table 1: Datasets for Fine-tuning and evaluation
 
 The ``Hidden'' column indicates whether the dataset is concealed from participants.
 
