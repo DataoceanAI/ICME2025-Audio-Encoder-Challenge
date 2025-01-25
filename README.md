@@ -11,7 +11,7 @@ Participants may test and optimize models independently, but the final rankings 
 
 ### Registration
 
-To participate, registration is required. Please complete the [registration form](https://forms.gle/VGgRQdPLs9f72UM8A) before **April 1, 2025**. Note that this does not mean the challenge starts on April 1, 2025. The challenge begins on **February 7, 2025**.
+To participate, registration is required. Please complete the [registration form](https://forms.gle/VGgRQdPLs9f72UM8A) before **April 1, 2025**. Note that this does not means the challenge starts on April 1, 2025. The challenge begins on **February 7, 2025**.
 
 For any other information about registration，please send Email to: <2025icme-aecc@dataoceanai.com>
 
