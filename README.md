@@ -38,7 +38,7 @@ Instead, participants are free to use any data for training, as long as it meets
 - Any data in Table.1 must be excluded from the training data.
 - Data derived from or augmented based on Table.1, either directly or indirectly, is not permitted for training.
 
-### Table 1: Datasets for Fine-tuning and evaluation
+### Table 1: Datasets for fine-tuning and evaluation
 
 The ``Hidden'' column indicates whether the dataset is concealed from participants.
 
