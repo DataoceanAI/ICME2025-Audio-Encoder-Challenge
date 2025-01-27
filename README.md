@@ -1,4 +1,4 @@
-# ICME 2025 Audio Encoder Capability Challenge
+# The IEEE International Conference on Multimedia & Expo (ICME) 2025 Audio Encoder Capability Challenge
 
 ## Overview
 
