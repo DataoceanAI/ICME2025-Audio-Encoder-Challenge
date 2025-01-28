@@ -102,4 +102,4 @@ By avoiding parameterized layers, this track provides a clear view of how well t
 
 ## More Details
 
-The more detailed description of the challenge can be found in the [ICME 2025 Audio Encoder Capability Challenge paper](https://arxiv.org/abs/2501.15302).
+The more detailed description of the challenge can be found in the [ICME 2025 Audio Encoder Capability Challenge](https://arxiv.org/abs/2501.15302) paper.
