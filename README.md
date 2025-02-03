@@ -2,10 +2,14 @@
 
 ## Overview
 
-The **ICME 2025 Audio Encoder Capability Challenge** aims to evaluate audio encoders in multi-task learning and real-world applications. It is strongly inspired by the [HEAR benchmark](https://hearbenchmark.com/), with several enhancements introduced: diverse task set, real-world applications, both of parameterized evaluation and parameter-free evaluation, and an new open-sourced, efficient evaluation system.
+The **ICME 2025 Audio Encoder Capability Challenge**, hosted by Xiaomi, University of Surrey, and DataOcean AI, aims to rigorously evaluate audio encoders in real-world downstream tasks.
 
-Participants submit pre-trained encoders that convert raw audio waveforms into continuous embeddings. These encoders will be tested across diverse tasks including **speech, environmental sounds, and music**, with a focus on real-world usability, using an [open-source evaluation system](https://github.com/jimbozhang/xares).
-Participants may test and optimize models independently, but the final rankings will be based on the evaluations by the organizers. This challenge aims to advance the state-of-the-art in continuous audio representation learning.
+Strongly inspired by the [HEAR benchmark](https://hearbenchmark.com/), this challenge introduces several key enhancements: a diverse task set, a focus on real-world applications, a combination of parameterized and parameter-free evaluation, and a new open-sourced, efficient evaluation system. 
+**Notably, this challenge imposes NO restrictions on model size or the scale of training data used.**  Models are only required to inference successfully within a Google Colab environment.
+
+Participants are invited to submit pre-trained encoders that convert raw audio waveforms into continuous embeddings. These encoders will undergo comprehensive testing across diverse tasks spanning speech, environmental sounds, and music. The evaluation will emphasize real-world usability and leverage an [open-source evaluation system](https://github.com/jimbozhang/xares).
+
+Participants are welcome to independently test and optimize their models. However, the final rankings will be determined based on evaluations conducted by the organizers.
 
 ## How to Participate
 
@@ -30,11 +34,11 @@ While there are no strict limitations on model size, submitted models must be ab
 
 ## Datasets
 
-The challenge places a significant emphasis on data collection and utilization, which is a crucial component of the competition.
-The organizers do not prescribe a specific training dataset.
+This challenge emphasizes **both model innovation AND data collection and utilization**, recognizing the critical role of data in achieving superior performance.
+The organizers do not mandate a specific training dataset.
 Instead, participants are free to use any data for training, as long as it meets the following conditions:
 
-- All training data must be publicly accessible.
+- All training data must be publicly accessible. **Publicly accessible online data, including crawls, is allowed.**
 - Any data in Table.1 must be excluded from the training data.
 - Data derived from or augmented based on Table.1, either directly or indirectly, is not permitted for training.
 
@@ -72,6 +76,7 @@ The ``Hidden'' column indicates whether the dataset is concealed from participan
 |            | NSynth-Pitch              | Pitches Classification       | Acc          | 128           | ✓           | ✗           |
 |            | Free Music Archive Small  | Music genre classification   | Acc          | 8             | ✓           | ✗           |
 
+**Note: The actual evaluation set selected by the organizers may include fewer datasets than those listed in Table 1.**
 
 ## Tracks
 
