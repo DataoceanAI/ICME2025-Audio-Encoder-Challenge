@@ -5,7 +5,8 @@
 The **ICME 2025 Audio Encoder Capability Challenge**, hosted by Xiaomi, University of Surrey, and DataOcean AI, aims to rigorously evaluate audio encoders in real-world downstream tasks.
 
 Strongly inspired by the [HEAR benchmark](https://hearbenchmark.com/), this challenge introduces several key enhancements: a diverse task set, a focus on real-world applications, a combination of parameterized and parameter-free evaluation, and a new open-sourced, efficient evaluation system. 
-**Notably, this challenge imposes NO restrictions on model size or the scale of training data used.**  Models are only required to inference successfully within a Google Colab environment.
+
+**Notably, this challenge imposes NO restrictions on model size or the scale of training data, and training based on existing pre-trained models is allowed**.
 
 Participants are invited to submit pre-trained encoders that convert raw audio waveforms into continuous embeddings. These encoders will undergo comprehensive testing across diverse tasks spanning speech, environmental sounds, and music. The evaluation will emphasize real-world usability and leverage an [open-source evaluation system](https://github.com/jimbozhang/xares).
 
@@ -30,7 +31,7 @@ For any other information about registration，please send Email to: <2025icme-a
 
 The pre-trained model weights can either be included in the ZIP file or downloaded automatically from external sources (e.g., Hugging Face) during runtime. If choosing the latter approach, please implement the automatic downloading mechanism in your encoder implementation.
 
-While there are no strict limitations on model size, submitted models must be able to be run successfully in a Google Colab T4 environment, where the runtime is equipped with a 16 GB NVIDIA Tesla T4 GPU, 12GB RAM.
+While there are no strict limitations on model size, submitted models must be able to be run successfully in a Google Colab T4 environment, where the runtime is equipped with a **16 GB NVIDIA Tesla T4 GPU, 12GB RAM**.
 
 ## Datasets
 
@@ -41,6 +42,8 @@ Instead, participants are free to use any data for training, as long as it meets
 - All training data must be publicly accessible. **Publicly accessible online data, including crawls, is allowed.**
 - Any data in Table.1 must be excluded from the training data.
 - Data derived from or augmented based on Table.1, either directly or indirectly, is not permitted for training.
+
+Training based on existing pre-trained models, such as fine-tuning or distillation, **is allowed**, but it must be ensured that the training data of the pre-trained models does not include the data in Table.1.
 
 ### Table 1: Datasets for fine-tuning and evaluation
 
@@ -87,7 +90,7 @@ We set two tracks, Track A and Track B, is to comprehensively evaluate the perfo
 A linear layer will be trained using the provided user embeddings, optimized with predefined hyperparameters for each task.
 This approach assesses how effectively the fixed representations can be adapted to specific tasks by training an additional linear layer,
 using predefined hyperparameters tailored for each task.
-This task evaluates the adaptability and effectiveness of the pre-trained models when applied to new,
+This track evaluates the adaptability and effectiveness of the pre-trained models when applied to new,
 task-specific contexts without altering the original model parameters.
 
 ### Track B: Unparameterized Evaluation.
@@ -97,6 +100,56 @@ This track aims to evaluate the inherent quality of the audio representations wi
 While this approach may not always yield the highest performance in real-world applications,
 it serves as a rigorous test of the fundamental representational power of the embeddings.
 By avoiding parameterized layers, this track provides a clear view of how well the model captures essential features of the audio data.
+
+## Baseline
+
+Here are the evaluation results for several baseline models. The weighted average is calculated using the test set size for each dataset.
+
+### Table 2: Track A baseline
+
+| Dataset                      | dasheng<br>(base) | wav2vec2<br>(large-100k-voxpopuli) | whisper<br>(base) | data2vec<br>(audio-base) |
+|:----------------------------:|:---------:|:--------:|:---------:|:---------:|
+| asvspoof (mini)              | **0.956** | 0.914    | 0.885     | 0.892     |
+| crema_d                      | **0.772** | 0.568    | 0.600     | 0.566     |
+| esc50                        | **0.869** | 0.579    | 0.614     | 0.249     |
+| fluentspeechcommands_kws     | 0.916     | 0.417    | 0.878     | **0.962** |
+| freemusicarchive_genre       | **0.640** | 0.518    | 0.595     | 0.360     |
+| fsdkaggle2018                | **0.557** | 0.352    | 0.478     | 0.196     |
+| gtzan                        | **0.869** | 0.681    | 0.751     | 0.495     |
+| libricount                   | **0.688** | 0.605    | 0.549     | 0.507     |
+| librispeech_male_female(mini)| 0.859     | 0.703    | **0.877** | 0.692     |
+| nsynth_instument             | **0.261** | 0.251    | 0.259     | 0.223     |
+| ravdess                      | **0.725** | 0.440    | 0.460     | 0.469     |
+| speechcommandsv1             | **0.967** | 0.805    | 0.955     | 0.930     |
+| urbansound8k                 | **0.835** | 0.676    | 0.719     | 0.443     |
+| vocalsound                   | **0.910** | 0.791    | 0.871     | 0.807     |
+| voxceleb1 (mini)             | **0.159** | 0.020    | 0.088     | 0.031     |
+| voxlingua33 (mini)           | 0.411     | 0.050    | **0.419** | 0.345     |
+| **Weighted Average**         | **0.640** | 0.479    | 0.588     | 0.533     |
+
+---
+
+### Table 3: Track B baseline
+
+| Dataset                       | dasheng<br>(base) | wav2vec2<br>(large-100k-voxpopuli) | whisper<br>(base) | data2vec<br>(audio-base) |
+|:-----------------------------:|:---------:|:--------:|:---------:|:---------:|
+| asvspoof (mini)               | 0.833     | 0.611    | 0.600     | **0.919** |
+| crema_d                       | 0.381     | 0.175    | **0.382** | 0.325     |
+| esc50                         | **0.621** | 0.091    | 0.191     | 0.037     |
+| fluentspeechcommands_kws      | **0.025** | 0.008    | 0.032     | 0.156     |
+| freemusicarchive_genre        | **0.589** | 0.135    | 0.396     | 0.126     |
+| gtzan                         | **0.753** | 0.347    | 0.504     | 0.119     |
+| libricount                    | **0.310** | 0.241    | 0.253     | 0.186     |
+| librispeech_male_female (mini)| 0.493     | 0.552    | 0.586     | **0.632** |
+| nsynth_instument              | **0.253** | 0.235    | 0.233     | 0.209     |
+| ravdess                       | **0.369** | 0.171    | 0.287     | 0.289     |
+| speechcommandsv1              | **0.903** | 0.208    | 0.096     | 0.850     |
+| urbansound8k                  | **0.662** | 0.334    | 0.214     | 0.153     |
+| vocalsound                    | **0.336** | 0.265    | 0.417     | 0.295     |
+| voxceleb1 (mini)              | **0.016** | 0.001    | 0.007     | 0.001     |
+| voxlingua33 (mini)            | **0.222** | 0.017    | 0.207     | 0.095     |
+| **Weighted Average**          | **0.372** | 0.224    | 0.251     | 0.351     |
+
 
 ## Important Dates
 
