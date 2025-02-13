@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **ICME 2025 Audio Encoder Capability Challenge**, hosted by Xiaomi, University of Surrey, and DataOcean AI, aims to rigorously evaluate audio encoders in real-world downstream tasks.
+The **ICME 2025 Audio Encoder Capability Challenge**, hosted by Xiaomi, University of Surrey, and Dataocean AI, aims to rigorously evaluate audio encoders in real-world downstream tasks.
 
 Strongly inspired by the [HEAR benchmark](https://hearbenchmark.com/), this challenge introduces several key enhancements: a diverse task set, a focus on real-world applications, a combination of parameterized and parameter-free evaluation, and a new open-sourced, efficient evaluation system. 
 
