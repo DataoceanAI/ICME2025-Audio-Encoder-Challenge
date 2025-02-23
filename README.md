@@ -106,7 +106,7 @@ Here are the evaluation results for several baseline models. The weighted averag
 
 ### Table 2: Track A baseline
 
-| Dataset                        | dasheng<br>(base) | wav2vec2<br>(large-100k-voxpopuli) | whisper<br>(base) | data2vec<br>(audio-base) |
+| Task                           | dasheng<br>(base) | wav2vec2<br>(large-100k-voxpopuli) | whisper<br>(base) | data2vec<br>(audio-base) |
 |:------------------------------:|:---------:|:--------:|:---------:|:---------:|
 | ASV2015                        | **0.963** | 0.914    | 0.885     | 0.892     |
 | Clotho                         | **0.033** | 0.018    | 0.029     | 0.006     |
@@ -133,7 +133,7 @@ Here are the evaluation results for several baseline models. The weighted averag
 
 ### Table 3: Track B baseline
 
-| Dataset                        | dasheng<br>(base) | wav2vec2<br>(large-100k-voxpopuli) | whisper<br>(base) | data2vec<br>(audio-base) |
+| Task                           | dasheng<br>(base) | wav2vec2<br>(large-100k-voxpopuli) | whisper<br>(base) | data2vec<br>(audio-base) |
 |:------------------------------:|:---------:|:--------:|:---------:|:---------:|
 | ASV2015                        | 0.869     | 0.858    | 0.843     | **0.942** |
 | CREMA-D                        | 0.381     | 0.175    | **0.382** | 0.325     |
