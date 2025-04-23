@@ -24,7 +24,7 @@ For any other information about registration，please send Email to: <2025icme-a
 
 1. Clone the audio encoder template from the [GitHub repository](https://github.com/jimbozhang/xares-template.git).
 2. Implement your own audio encoder following the instructions in `README.md` within the cloned repository. The implementation must pass all checks in `audio_encoder_checker.py` provided in the repository.
-3. Before the submission deadline, **April 30, 2025**, email the following files to the organizers at [2025icme-aecc@dataoceanai.com](mailto:2025icme-aecc@dataoceanai.com):
+3. Before the submission deadline, **April 30, 2025 (AoE)**, email the following files to the organizers at [2025icme-aecc@dataoceanai.com](mailto:2025icme-aecc@dataoceanai.com):
 
 - a ZIP file containing the complete repository
 - a technical report paper (PDF format) not exceeding 6 pages describing your implementation
@@ -158,7 +158,7 @@ Here are the evaluation results for several baseline models. The weighted averag
 
 - **February 7, 2025**: Challenge announcement and start.
 - **April 1, 2025**: Registration deadline ([Register here](https://forms.gle/VGgRQdPLs9f72UM8A)).  
-- **April 30, 2025**: Submission deadline.  
+- **April 30, 2025 (AoE timezone)**: Submission deadline.  
 - **May 27, 2025**: Results announced.
 
 ## More Details
