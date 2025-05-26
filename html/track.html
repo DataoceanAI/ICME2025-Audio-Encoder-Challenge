@@ -1,0 +1,44 @@
+<!-- docs/table.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sortable Table</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th { cursor: pointer; background: #f0f0f0; }
+    td, th { border: 1px solid #ddd; padding: 8px; }
+  </style>
+</head>
+<body>
+  <table id="sortable-table">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Name</th>
+        <th onclick="sortTable(1)">Stars</th>
+        <th onclick="sortTable(2)">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Project A</td><td>1000</td><td>2024-01-01</td></tr>
+      <tr><td>Project B</td><td>1500</td><td>2024-02-01</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    function sortTable(column) {
+      const table = document.getElementById("sortable-table");
+      const rows = Array.from(table.rows).slice(1); // 跳过表头
+      const isAsc = table.getAttribute("data-sort-asc") === "true";
+      
+      rows.sort((a, b) => {
+        const aVal = a.cells[column].textContent;
+        const bVal = b.cells[column].textContent;
+        return isAsc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      });
+      
+      table.tBodies[0].append(...rows);
+      table.setAttribute("data-sort-asc", !isAsc);
+    }
+  </script>
+</body>
+</html>
