@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Encoder Benchmark Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+            position: relative;
+        }
+        th:hover {
+            background-color: #e6e6e6;
+        }
+        th.sort-asc::after {
+            content: " ↑";
+        }
+        th.sort-desc::after {
+            content: " ↓";
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .company-cell {
+            text-align: left;
+        }
+        .report-link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .report-link:hover {
+            text-decoration: underline;
+        }
+        .weighted-avg {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Encoder Benchmark Results</h1>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('sheet1')">Track 1 MLP Results</div>
+        <div class="tab" onclick="switchTab('sheet2')">Track 2 KNN Results</div>
+    </div>
+    
+    <div id="sheet1-content" class="tab-content active">
+        <h2>Track 1 MLP Results</h2>
+        <table id="sheet1-table">
+            <thead>
+                <tr>
+                    <th>Affiliation</th>
+                    <th>Team</th>
+                    <th>Report</th>
+                    <th class="weighted-avg">Weighted Avg</th>
+                    <!-- Dataset columns will be added by JavaScript -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="sheet2-content" class="tab-content">
+        <h2>Track 2 KNN Results</h2>
+        <table id="sheet2-table">
+            <thead>
+                <tr>
+                    <th>Affiliation</th>
+                    <th>Team</th>
+                    <th>Report</th>
+                    <th class="weighted-avg">Weighted Avg</th>
+                    <!-- Dataset columns will be added by JavaScript -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // JSON data (would normally be loaded from an external file)
+        // Function to switch between tabs
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate selected tab and content
+            document.getElementById(tabId + '-content').classList.add('active');
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Function to create table headers for datasets
+        function createDatasetHeaders(tableId, datasets) {
+            const thead = document.querySelector(`#${tableId} thead tr`);
+            
+            datasets.forEach(dataset => {
+                const th = document.createElement('th');
+                th.textContent = dataset;
+                thead.appendChild(th);
+            });
+        }
+
+        // Function to populate table with data
+        function populateTable(tableId, encoders, datasets) {
+            const tbody = document.querySelector(`#${tableId} tbody`);
+            tbody.innerHTML = '';
+            
+            encoders.forEach(encoder => {
+                const row = document.createElement('tr');
+                
+                // Company cell
+                const companyCell = document.createElement('td');
+                companyCell.textContent = encoder.company;
+                companyCell.className = 'company-cell';
+                row.appendChild(companyCell);
+                
+                // Team cell
+                const teamCell = document.createElement('td');
+                teamCell.textContent = encoder.team;
+                row.appendChild(teamCell);
+                
+                // Report link cell
+                const reportCell = document.createElement('td');
+                const reportLink = document.createElement('a');
+                reportLink.href = encoder.report_link;
+                reportLink.textContent = 'download';
+                reportLink.className = 'report-link';
+                reportLink.target = '_blank';
+                reportCell.appendChild(reportLink);
+                row.appendChild(reportCell);
+                
+                // Weighted average cell
+                const avgCell = document.createElement('td');
+                avgCell.textContent = encoder.weighted_avg.toFixed(3);
+                avgCell.className = 'weighted-avg';
+                row.appendChild(avgCell);
+                
+                // Score cells
+                encoder.scores.forEach(score => {
+                    const scoreCell = document.createElement('td');
+                    scoreCell.textContent = score.toFixed(3);
+                    row.appendChild(scoreCell);
+                });
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Function to add sorting functionality to table
+        function addSorting(tableId, numFixedColumns) {
+            const table = document.getElementById(tableId);
+            const headers = table.querySelectorAll('th');
+            const tbody = table.querySelector('tbody');
+            
+            headers.forEach((header, index) => {
+                if (index < numFixedColumns) return; // Skip fixed columns (company, team, report, avg)
+                
+                header.addEventListener('click', () => {
+                    // Determine current sort direction
+                    const isAsc = header.classList.contains('sort-asc');
+                    const isDesc = header.classList.contains('sort-desc');
+                    
+                    // Reset all headers
+                    headers.forEach(h => {
+                        h.classList.remove('sort-asc', 'sort-desc');
+                    });
+                    
+                    // Set new sort direction
+                    const direction = isAsc ? 'desc' : 'asc';
+                    header.classList.add(`sort-${direction}`);
+                    
+                    // Sort the table
+                    sortTable(tableId, index, direction);
+                });
+            });
+            
+            function sortTable(tableId, columnIndex, direction) {
+                const table = document.getElementById(tableId);
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                
+                rows.sort((a, b) => {
+                    // Special handling for weighted average column (index 3)
+                    if (columnIndex === 3) {
+                        const aVal = parseFloat(a.cells[columnIndex].textContent);
+                        const bVal = parseFloat(b.cells[columnIndex].textContent);
+                        return direction === 'asc' ? aVal - bVal : bVal - aVal;
+                    }
+                    
+                    // For dataset columns (index > 3)
+                    if (columnIndex > 3) {
+                        const aVal = parseFloat(a.cells[columnIndex].textContent);
+                        const bVal = parseFloat(b.cells[columnIndex].textContent);
+                        return direction === 'asc' ? aVal - bVal : bVal - aVal;
+                    }
+                    
+                    // For other columns (company, team, report)
+                    const aVal = a.cells[columnIndex].textContent.trim().toLowerCase();
+                    const bVal = b.cells[columnIndex].textContent.trim().toLowerCase();
+                    return direction === 'asc' 
+                        ? aVal.localeCompare(bVal) 
+                        : bVal.localeCompare(aVal);
+                });
+                
+                // Re-add rows in sorted order
+                rows.forEach(row => tbody.appendChild(row));
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+		
+				// 加载数据
+        fetch('https://dataoceanai.github.io/ICME2025-Audio-Encoder-Challenge/docs/result.json')
+            .then(response => {
+                if (!response.ok) throw new Error('网络响应异常');
+                return response.json();
+            })
+            .then(data => {
+                // document.getElementById('loading').remove();
+                 // Sheet 1
+            createDatasetHeaders('sheet1-table', data.sheet1.datasets);
+            populateTable('sheet1-table', data.sheet1.encoders, data.sheet1.datasets);
+            addSorting('sheet1-table', 4); // 4 fixed columns (company, team, report, avg)
+            
+            // Sheet 2
+            createDatasetHeaders('sheet2-table', data.sheet2.datasets);
+            populateTable('sheet2-table', data.sheet2.encoders, data.sheet2.datasets);
+            addSorting('sheet2-table', 4); // 4 fixed columns (company, team, report, avg)
+            })
+            .catch(error => {
+                document.getElementById('loading').innerHTML = 
+                    `<p style="color:red">加载失败: ${error.message}</p>`;
+            });
+			
+           
+        });
+    </script>
+</body>
+</html>
