@@ -1,15 +1,45 @@
 {
   "headers": [
-    "需要取个名字",
-    "任务权重",
-    "baseline",
-    "AluminumboxEncoder",
-    "CPE_Encoder",
-    "ChunkingEncoder",
-    "DQFEncoder",
-    "FQEncoder",
-    "JEPAEncoder",
-    "M2DCLAPftASEncoder"
+    {
+      "name": "需要取个名字",
+      "link": null
+    },
+    {
+      "name": "任务权重",
+      "link": null
+    },
+    {
+      "name": "baseline",
+      "link": null
+    },
+    {
+      "name": "AluminumboxEncoder",
+      "link": null
+    },
+    {
+      "name": "CPE_Encoder",
+      "link": "https://drive.google.com/file/d/13WCT9BCjDjbirs1eQC0EOMOd-v58Fpg9/view?usp=drive_link"
+    },
+    {
+      "name": "ChunkingEncoder",
+      "link": "https://drive.google.com/file/d/1RWjTkXQcyI-tLp-iSaZ3kSqG3eJJr5C_/view?usp=drive_link"
+    },
+    {
+      "name": "DQFEncoder",
+      "link": "https://drive.google.com/file/d/1OIFY0-JUvTyxsIm8fS0ris5Eg5aEWHkB/view?usp=sharing"
+    },
+    {
+      "name": "FQEncoder",
+      "link": "https://drive.google.com/file/d/1ir6K-VgUhoGhsSrV9fKZTq3SMlPjzkIT/view?usp=drive_link"
+    },
+    {
+      "name": "JEPAEncoder",
+      "link": "https://drive.google.com/file/d/1AWszbfLKSRyrCb-W-zy34NqfcHA2K5my/view?usp=sharing"
+    },
+    {
+      "name": "M2DCLAPftASEncoder",
+      "link": "https://drive.google.com/file/d/1Lbiru4R8AulaGLsa9wmpJgjB9eGxhEIo/view?usp=drive_link"
+    }
   ],
   "rows": [
     [
