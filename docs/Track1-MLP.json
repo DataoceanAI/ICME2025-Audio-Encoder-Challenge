@@ -28,7 +28,7 @@
     2000,
     2000,
     1609,
-    NaN
+    0
   ],
   "task_weights": [
     "baseline",
@@ -62,7 +62,7 @@
     0.804
   ],
   "baseline": [
-    NaN,
+    0,
     0.98,
     0.027,
     0.772,
@@ -97,7 +97,7 @@
       "name": "bytedance",
       "report_link": "https://drive.google.com/file/d/13WCT9BCjDjbirs1eQC0EOMOd-v58Fpg9/view?usp=drive_link",
       "data": [
-        NaN,
+        0,
         0.997,
         0.054,
         0.868,
@@ -132,7 +132,7 @@
       "name": "Carnegie Mellon University",
       "report_link": "https://drive.google.com/file/d/1RWjTkXQcyI-tLp-iSaZ3kSqG3eJJr5C_/view?usp=drive_link",
       "data": [
-        NaN,
+        0,
         0.983,
         0.033,
         0.81,
@@ -167,7 +167,7 @@
       "name": "bytedance",
       "report_link": "https://drive.google.com/file/d/1OIFY0-JUvTyxsIm8fS0ris5Eg5aEWHkB/view?usp=sharing",
       "data": [
-        NaN,
+        0,
         0.995,
         0.055,
         0.858,
@@ -202,7 +202,7 @@
       "name": "bytedance",
       "report_link": "https://drive.google.com/file/d/1ir6K-VgUhoGhsSrV9fKZTq3SMlPjzkIT/view?usp=drive_link",
       "data": [
-        NaN,
+        0,
         0.986,
         0.058,
         0.862,
@@ -237,7 +237,7 @@
       "name": "IRIT",
       "report_link": "https://drive.google.com/file/d/1AWszbfLKSRyrCb-W-zy34NqfcHA2K5my/view?usp=sharing",
       "data": [
-        NaN,
+        0,
         0.884,
         0.013,
         0.426,
@@ -272,7 +272,7 @@
       "name": "NTT",
       "report_link": "https://drive.google.com/file/d/1Lbiru4R8AulaGLsa9wmpJgjB9eGxhEIo/view?usp=drive_link",
       "data": [
-        NaN,
+        0,
         0.924,
         0.045,
         0.715,
