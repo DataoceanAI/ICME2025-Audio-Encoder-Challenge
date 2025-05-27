@@ -1,103 +1,42 @@
 {
   "datasets": [
-    "Task Weight",
-    2000,
-    1045,
-    1116,
-    1153,
-    400,
-    5000,
-    2000,
-    800,
-    2000,
-    1600,
-    100,
-    5000,
-    5000,
-    1144,
-    10000,
-    2620,
-    5000,
-    65,
-    2000,
-    360,
-    2000,
-    5000,
-    873,
-    1867,
-    2000,
-    2000,
-    1609,
-    "",
-  ],
-  "task_weights": [
-    "baseline",
-    0.968,
-    0.035,
-    0.767,
-    0.535,
-    0.859,
-    0.87,
-    0.948,
-    0.64,
-    0.409,
-    0.523,
-    0.852,
-    0.974,
-    0.999,
-    0.681,
-    0.675,
-    0.988,
-    0.986,
-    0.517,
-    0.534,
-    0.75,
-    0.97,
-    0.972,
-    0.835,
-    0.249,
-    0.91,
-    0.782,
-    0.814,
-    0.804
-  ],
-  "baseline": [
-    "",
-    0.98,
-    0.027,
-    0.772,
-    0.556,
-    0.871,
-    0.873,
-    0.958,
-    0.647,
-    0.407,
-    0.654,
-    0.89,
-    0.97,
-    1,
-    0.719,
-    0.715,
-    0.984,
-    0.988,
-    0.549,
-    0.624,
-    0.766,
-    0.956,
-    0.978,
-    0.836,
-    0.317,
-    0.911,
-    0.817,
-    0.844,
-    0.807
+    "Weighted Average Score",
+    "asvspoof2015",
+    "clotho",
+    "cremad",
+    "desed",
+    "esc50",
+    "finger_snap",
+    "fluentspeechcommands",
+    "freemusicarchive",
+    "fsd50k",
+    "fsdkaggle2018",
+    "gtzan_genre",
+    "inside_outside_car",
+    "key_scratching",
+    "libricount",
+    "librispeech",
+    "librispeechmalefemale",
+    "liveenv",
+    "maestro",
+    "nsynthinstument",
+    "ravdess",
+    "speechcommandsv1",
+    "subway_broadcast",
+    "urbansound8k",
+    "vocalimitations",
+    "vocalsound",
+    "voxceleb1",
+    "voxlingua33"
   ],
   "encoders": [
     {
+      "company": "bytedance",
+      "team": "GAEBT",
       "name": "CPE_Encoder",
       "report_link": "https://drive.google.com/file/d/13WCT9BCjDjbirs1eQC0EOMOd-v58Fpg9/view?usp=drive_link",
-      "data": [
-        "",
+      "weighted_avg": 0.86,
+      "scores": [
         0.997,
         0.054,
         0.868,
@@ -124,15 +63,16 @@
         0.319,
         0.938,
         0.855,
-        0.918,
-        0.86
+        0.918
       ]
     },
     {
+      "company": "Carnegie Mellon University",
+      "team": "CMU",
       "name": "ChunkingEncoder",
       "report_link": "https://drive.google.com/file/d/1RWjTkXQcyI-tLp-iSaZ3kSqG3eJJr5C_/view?usp=drive_link",
-      "data": [
-        "",
+      "weighted_avg": 0.827,
+      "scores": [
         0.983,
         0.033,
         0.81,
@@ -159,15 +99,16 @@
         0.29,
         0.924,
         0.856,
-        0.875,
-        0.827
+        0.875
       ]
     },
     {
+      "company": "bytedance",
+      "team": "audiocodec",
       "name": "DQFEncoder",
       "report_link": "https://drive.google.com/file/d/1OIFY0-JUvTyxsIm8fS0ris5Eg5aEWHkB/view?usp=sharing",
-      "data": [
-        "",
+      "weighted_avg": 0.865,
+      "scores": [
         0.995,
         0.055,
         0.858,
@@ -194,15 +135,16 @@
         0.332,
         0.935,
         0.838,
-        0.92,
-        0.865
+        0.92
       ]
     },
     {
+      "company": "bytedance",
+      "team": "AudioX",
       "name": "FQEncoder",
       "report_link": "https://drive.google.com/file/d/1ir6K-VgUhoGhsSrV9fKZTq3SMlPjzkIT/view?usp=drive_link",
-      "data": [
-        "",
+      "weighted_avg": 0.836,
+      "scores": [
         0.986,
         0.058,
         0.862,
@@ -229,15 +171,16 @@
         0.271,
         0.935,
         0.36,
-        0.904,
-        0.836
+        0.904
       ]
     },
     {
+      "company": "IRIT",
+      "team": "SAMoVA",
       "name": "JEPAEncoder",
       "report_link": "https://drive.google.com/file/d/1AWszbfLKSRyrCb-W-zy34NqfcHA2K5my/view?usp=sharing",
-      "data": [
-        "",
+      "weighted_avg": 0.516,
+      "scores": [
         0.884,
         0.013,
         0.426,
@@ -264,15 +207,16 @@
         0.058,
         0.523,
         0.039,
-        0.102,
-        0.516
+        0.102
       ]
     },
     {
+      "company": "NTT",
+      "team": "Probin",
       "name": "M2DCLAPftASEncoder",
       "report_link": "https://drive.google.com/file/d/1Lbiru4R8AulaGLsa9wmpJgjB9eGxhEIo/view?usp=drive_link",
-      "data": [
-        "",
+      "weighted_avg": 0.709,
+      "scores": [
         0.924,
         0.045,
         0.715,
@@ -299,8 +243,7 @@
         0.285,
         0.932,
         0.641,
-        0.605,
-        0.709
+        0.605
       ]
     }
   ]
