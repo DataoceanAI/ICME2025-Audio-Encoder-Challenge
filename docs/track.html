@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>音频编码器性能对比（含报告链接）</title>
+    <title>音频编码器性能对比</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 2rem; overflow-x: auto; }
         table { border-collapse: collapse; margin: 1rem 0; min-width: 100%; }
@@ -14,11 +14,12 @@
         .report-link { color: #0366d6; text-decoration: none; }
         .report-link:hover { text-decoration: underline; }
         #loading { margin: 20px 0; color: #6c757d; }
-        .header-wrapper { display: flex; flex-direction: column; }
+        .encoder-header { display: flex; flex-direction: column; }
+        .weight-cell { background-color: #f0f7ff; }
     </style>
 </head>
 <body>
-    <h1>Track1-MLP 性能数据</h1>
+    <h1>基于Sheet2的性能数据展示</h1>
     <div id="loading">正在加载数据...</div>
     <div id="table-container"></div>
 
@@ -45,107 +46,105 @@
             
             // 创建表头
             const thead = document.createElement('thead');
-            const headerRow = document.createElement('tr');
             
-            data.headers.forEach((header, colIndex) => {
-                if (!header.name) return;
-                
-                const th = document.createElement('th');
-                
-                // 带链接的表头
-                const headerWrapper = document.createElement('div');
-                headerWrapper.className = 'header-wrapper';
-                
-                const titleSpan = document.createElement('span');
-                titleSpan.textContent = header.name;
-                
-                headerWrapper.appendChild(titleSpan);
-                
-                // 添加报告链接（如果有）
-                if (header.link) {
-                    const link = document.createElement('a');
-                    link.className = 'report-link';
-                    link.href = header.link;
-                    link.target = '_blank';
-                    link.textContent = '[报告]';
-                    headerWrapper.appendChild(link);
-                }
-                
-                // 添加排序图标
-                const sortIcon = document.createElement('span');
-                sortIcon.className = 'sort-icon';
-                sortIcon.textContent = '↕';
-                
-                th.appendChild(headerWrapper);
-                th.appendChild(sortIcon);
-                th.onclick = () => sortTable(colIndex, th);
-                headerRow.appendChild(th);
+            // 第一行：数据集名称
+            const headerRow1 = document.createElement('tr');
+            headerRow1.appendChild(createCell('th', '编码器/数据集'));
+            data.datasets.forEach(dataset => {
+                headerRow1.appendChild(createCell('th', dataset));
+            });
+            thead.appendChild(headerRow1);
+            
+            // 第二行：任务权重
+            const headerRow2 = document.createElement('tr');
+            headerRow2.appendChild(createCell('th', '任务权重'));
+            data.task_weights.forEach(weight => {
+                const cell = createCell('td', weight);
+                cell.classList.add('weight-cell');
+                headerRow2.appendChild(cell);
+            });
+            thead.appendChild(headerRow2);
+            
+            // 第三行：baseline
+            const baselineRow = document.createElement('tr');
+            baselineRow.appendChild(createCell('th', 'baseline'));
+            data.baseline.forEach(value => {
+                baselineRow.appendChild(createCell('td', value));
             });
             
-            thead.appendChild(headerRow);
-            table.appendChild(thead);
-            
-            // 创建数据行
+            // 编码器数据行
             const tbody = document.createElement('tbody');
+            tbody.appendChild(baselineRow);
             
-            data.rows.forEach(row => {
-                const tr = document.createElement('tr');
+            data.encoders.forEach(encoder => {
+                const row = document.createElement('tr');
                 
-                data.headers.forEach((_, colIndex) => {
-                    const td = document.createElement('td');
-                    td.textContent = row[colIndex] || '';
-                    tr.appendChild(td);
+                // 编码器名称+报告链接
+                const nameCell = document.createElement('th');
+                const nameWrapper = document.createElement('div');
+                nameWrapper.className = 'encoder-header';
+                
+                nameWrapper.innerHTML = `
+                    <span>${encoder.name}</span>
+                    <a href="${encoder.report_link}" class="report-link" target="_blank">[报告]</a>
+                `;
+                
+                nameCell.appendChild(nameWrapper);
+                nameCell.onclick = (e) => {
+                    if (e.target.tagName !== 'A') {
+                        sortByEncoder(encoder.name, nameCell);
+                    }
+                };
+                row.appendChild(nameCell);
+                
+                // 编码器数据
+                encoder.data.forEach(value => {
+                    row.appendChild(createCell('td', value));
                 });
                 
-                tbody.appendChild(tr);
+                tbody.appendChild(row);
             });
             
+            table.appendChild(thead);
             table.appendChild(tbody);
             container.appendChild(table);
         }
-
-        // 排序功能
-        let currentSort = { column: null, ascending: true };
         
-        function sortTable(columnIndex, thElement) {
+        // 创建单元格辅助函数
+        function createCell(type, content) {
+            const cell = document.createElement(type);
+            cell.textContent = content;
+            return cell;
+        }
+        
+        // 按编码器排序
+        function sortByEncoder(encoderName, thElement) {
             const table = document.querySelector('table');
             const tbody = table.querySelector('tbody');
             const rows = Array.from(tbody.querySelectorAll('tr'));
             const sortIcons = document.querySelectorAll('.sort-icon');
             
+            // 找出目标编码器在数据中的位置
+            const encoderIndex = rows.findIndex(row => 
+                row.cells[0].textContent.includes(encoderName));
+            
+            if (encoderIndex === -1) return;
+            
+            // 获取排序方向
+            const isAsc = !thElement.getAttribute('data-sorted-asc');
+            thElement.setAttribute('data-sorted-asc', isAsc);
+            
             // 重置所有排序图标
             sortIcons.forEach(icon => icon.textContent = '↕');
             
-            // 判断排序方向
-            if (currentSort.column === columnIndex) {
-                currentSort.ascending = !currentSort.ascending;
-            } else {
-                currentSort = { column: columnIndex, ascending: true };
-            }
-            
-            // 更新当前列的排序图标
-            thElement.querySelector('.sort-icon').textContent = 
-                currentSort.ascending ? '▲' : '▼';
-            
             // 执行排序
             rows.sort((rowA, rowB) => {
-                const valueA = rowA.cells[columnIndex].textContent;
-                const valueB = rowB.cells[columnIndex].textContent;
-                
-                // 数值排序
-                if (!isNaN(valueA) && !isNaN(valueB)) {
-                    const numA = parseFloat(valueA);
-                    const numB = parseFloat(valueB);
-                    return currentSort.ascending ? numA - numB : numB - numA;
-                }
-                
-                // 文本排序
-                return currentSort.ascending 
-                    ? valueA.localeCompare(valueB) 
-                    : valueB.localeCompare(valueA);
+                const aVal = parseFloat(rowA.cells[encoderIndex + 1].textContent);
+                const bVal = parseFloat(rowB.cells[encoderIndex + 1].textContent);
+                return isAsc ? bVal - aVal : aVal - bVal;
             });
             
-            // 重新插入已排序的行
+            // 重新插入行
             rows.forEach(row => tbody.appendChild(row));
         }
     </script>
