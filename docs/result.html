@@ -95,7 +95,7 @@
                     <th>Affiliation</th>
                     <th>Team</th>
                     <th>Report</th>
-                    <th class="weighted-avg">Weighted Avg</th>
+                    <th class="weighted-avg">Weighted Averaged Score</th>
                     <!-- Dataset columns will be added by JavaScript -->
                 </tr>
             </thead>
@@ -113,7 +113,7 @@
                     <th>Affiliation</th>
                     <th>Team</th>
                     <th>Report</th>
-                    <th class="weighted-avg">Weighted Avg</th>
+                    <th class="weighted-avg">Weighted Averaged Score</th>
                     <!-- Dataset columns will be added by JavaScript -->
                 </tr>
             </thead>
@@ -274,12 +274,12 @@
                  // Sheet 1
             createDatasetHeaders('sheet1-table', data.sheet1.datasets);
             populateTable('sheet1-table', data.sheet1.encoders, data.sheet1.datasets);
-            addSorting('sheet1-table', 4); // 4 fixed columns (company, team, report, avg)
+            addSorting('sheet1-table', 3); // 4 fixed columns (company, team, report, avg)
             
             // Sheet 2
             createDatasetHeaders('sheet2-table', data.sheet2.datasets);
             populateTable('sheet2-table', data.sheet2.encoders, data.sheet2.datasets);
-            addSorting('sheet2-table', 4); // 4 fixed columns (company, team, report, avg)
+            addSorting('sheet2-table', 3); // 4 fixed columns (company, team, report, avg)
             })
             .catch(error => {
                 document.getElementById('loading').innerHTML = 
