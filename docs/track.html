@@ -15,11 +15,13 @@
         .report-link:hover { text-decoration: underline; }
         #loading { margin: 20px 0; color: #6c757d; }
         .encoder-header { display: flex; flex-direction: column; }
-        .weight-cell { background-color: #f0f7ff; }
+        .company-cell { background-color: #f0f7ff; }
+        .avg-cell { background-color: #e7f5ff; font-weight: bold; }
+        .highlight { background-color: #fff3cd; }
     </style>
 </head>
 <body>
-    <h1>基于Sheet2的性能数据展示</h1>
+    <h1>音频编码器性能对比（最新数据）</h1>
     <div id="loading">正在加载数据...</div>
     <div id="table-container"></div>
 
@@ -47,101 +49,118 @@
             // 创建表头
             const thead = document.createElement('thead');
             
-            // 第一行：数据集名称
+            // 第一行：主表头
             const headerRow1 = document.createElement('tr');
-            headerRow1.appendChild(createCell('th', '编码器/数据集'));
+            headerRow1.appendChild(createHeaderCell("公司/机构", "company-cell"));
+            headerRow1.appendChild(createHeaderCell("团队"));
+            headerRow1.appendChild(createHeaderCell("编码器"));
+            headerRow1.appendChild(createHeaderCell("技术报告"));
+            headerRow1.appendChild(createHeaderCell("加权平均", "avg-cell"));
+            
+            // 数据集列
             data.datasets.forEach(dataset => {
-                headerRow1.appendChild(createCell('th', dataset));
+                headerRow1.appendChild(createHeaderCell(dataset));
             });
+            
             thead.appendChild(headerRow1);
+            table.appendChild(thead);
             
-            // 第二行：任务权重
-            const headerRow2 = document.createElement('tr');
-            headerRow2.appendChild(createCell('th', '任务权重'));
-            data.task_weights.forEach(weight => {
-                const cell = createCell('td', weight);
-                cell.classList.add('weight-cell');
-                headerRow2.appendChild(cell);
-            });
-            thead.appendChild(headerRow2);
-            
-            // 第三行：baseline
-            const baselineRow = document.createElement('tr');
-            baselineRow.appendChild(createCell('th', 'baseline'));
-            data.baseline.forEach(value => {
-                baselineRow.appendChild(createCell('td', value));
-            });
-            
-            // 编码器数据行
+            // 创建数据行
             const tbody = document.createElement('tbody');
-            tbody.appendChild(baselineRow);
             
             data.encoders.forEach(encoder => {
                 const row = document.createElement('tr');
                 
-                // 编码器名称+报告链接
-                const nameCell = document.createElement('th');
-                const nameWrapper = document.createElement('div');
-                nameWrapper.className = 'encoder-header';
+                // 公司/机构
+                row.appendChild(createCell('td', encoder.company, 'company-cell'));
                 
-                nameWrapper.innerHTML = `
-                    <span>${encoder.name}</span>
-                    <a href="${encoder.report_link}" class="report-link" target="_blank">[报告]</a>
-                `;
+                // 团队名称
+                row.appendChild(createCell('td', encoder.team));
                 
-                nameCell.appendChild(nameWrapper);
-                nameCell.onclick = (e) => {
-                    if (e.target.tagName !== 'A') {
-                        sortByEncoder(encoder.name, nameCell);
-                    }
-                };
-                row.appendChild(nameCell);
+                // 编码器名称
+                row.appendChild(createCell('td', encoder.name));
                 
-                // 编码器数据
-                encoder.data.forEach(value => {
-                    row.appendChild(createCell('td', value));
+                // 报告链接
+                const reportCell = createCell('td', '');
+                if (encoder.report_link) {
+                    reportCell.innerHTML = `
+                        <a href="${encoder.report_link}" class="report-link" target="_blank">
+                            查看报告
+                        </a>
+                    `;
+                }
+                row.appendChild(reportCell);
+                
+                // 加权平均（特殊样式）
+                row.appendChild(createCell('td', encoder.weighted_avg, 'avg-cell'));
+                
+                // 各数据集得分
+                encoder.scores.forEach(score => {
+                    row.appendChild(createCell('td', score));
                 });
                 
                 tbody.appendChild(row);
             });
             
-            table.appendChild(thead);
             table.appendChild(tbody);
             container.appendChild(table);
+            
+            // 添加排序功能
+            addSorting(table, data);
         }
         
         // 创建单元格辅助函数
-        function createCell(type, content) {
+        function createCell(type, content, className = '') {
             const cell = document.createElement(type);
             cell.textContent = content;
+            if (className) cell.classList.add(className);
             return cell;
         }
         
-        // 按编码器排序
-        function sortByEncoder(encoderName, thElement) {
+        function createHeaderCell(content, className = '') {
+            const th = document.createElement('th');
+            th.innerHTML = content;
+            if (className) th.classList.add(className);
+            return th;
+        }
+        
+        // 添加排序功能
+        function addSorting(table, data) {
+            const headers = table.querySelectorAll('thead th');
+            
+            headers.forEach((th, index) => {
+                // 跳过前5列（公司、团队、编码器、报告、加权平均）
+                if (index >= 5) {
+                    th.innerHTML += ' <span class="sort-icon">↕</span>';
+                    th.onclick = () => sortByDataset(index - 5, th);
+                }
+            });
+        }
+        
+        // 按数据集排序
+        function sortByDataset(datasetIndex, thElement) {
             const table = document.querySelector('table');
             const tbody = table.querySelector('tbody');
             const rows = Array.from(tbody.querySelectorAll('tr'));
-            const sortIcons = document.querySelectorAll('.sort-icon');
             
-            // 找出目标编码器在数据中的位置
-            const encoderIndex = rows.findIndex(row => 
-                row.cells[0].textContent.includes(encoderName));
-            
-            if (encoderIndex === -1) return;
-            
-            // 获取排序方向
-            const isAsc = !thElement.getAttribute('data-sorted-asc');
-            thElement.setAttribute('data-sorted-asc', isAsc);
+            // 判断排序方向
+            const isAsc = thElement.getAttribute('data-sort-dir') !== 'asc';
+            thElement.setAttribute('data-sort-dir', isAsc ? 'asc' : 'desc');
             
             // 重置所有排序图标
-            sortIcons.forEach(icon => icon.textContent = '↕');
+            document.querySelectorAll('.sort-icon').forEach(icon => {
+                icon.textContent = '↕';
+            });
+            
+            // 更新当前列的排序图标
+            thElement.querySelector('.sort-icon').textContent = isAsc ? '▲' : '▼';
             
             // 执行排序
             rows.sort((rowA, rowB) => {
-                const aVal = parseFloat(rowA.cells[encoderIndex + 1].textContent);
-                const bVal = parseFloat(rowB.cells[encoderIndex + 1].textContent);
-                return isAsc ? bVal - aVal : aVal - bVal;
+                // +5是因为前5列是固定列
+                const aVal = parseFloat(rowA.cells[datasetIndex + 5].textContent);
+                const bVal = parseFloat(rowB.cells[datasetIndex + 5].textContent);
+                return isAsc ? aVal - bVal : bVal - aVal;
             });
             
             // 重新插入行
