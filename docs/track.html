@@ -27,7 +27,7 @@
 
     <script>
         // 加载数据
-        fetch('./Track1-MLP.json')
+        fetch('https://dataoceanai.github.io/ICME2025-Audio-Encoder-Challenge/docs/Track1-MLP.json')
             .then(response => {
                 if (!response.ok) throw new Error('网络响应异常');
                 return response.json();
@@ -92,7 +92,7 @@
                 row.appendChild(reportCell);
                 
                 // 加权平均（特殊样式）
-                row.appendChild(createCell('td', encoder.weighted_avg, 'avg-cell'));
+                // row.appendChild(createCell('td', encoder.weighted_avg, 'avg-cell'));
                 
                 // 各数据集得分
                 encoder.scores.forEach(score => {
@@ -129,10 +129,10 @@
             const headers = table.querySelectorAll('thead th');
             
             headers.forEach((th, index) => {
-                // 跳过前5列（公司、团队、编码器、报告、加权平均）
-                if (index >= 5) {
+                // 跳过前5列（公司、团队、编码器、报告）
+                if (index >= 4) {
                     th.innerHTML += ' <span class="sort-icon">↕</span>';
-                    th.onclick = () => sortByDataset(index - 5, th);
+                    th.onclick = () => sortByDataset(index - 4, th);
                 }
             });
         }
@@ -158,8 +158,8 @@
             // 执行排序
             rows.sort((rowA, rowB) => {
                 // +5是因为前5列是固定列
-                const aVal = parseFloat(rowA.cells[datasetIndex + 5].textContent);
-                const bVal = parseFloat(rowB.cells[datasetIndex + 5].textContent);
+                const aVal = parseFloat(rowA.cells[datasetIndex + 4].textContent);
+                const bVal = parseFloat(rowB.cells[datasetIndex + 4].textContent);
                 return isAsc ? aVal - bVal : bVal - aVal;
             });
             
