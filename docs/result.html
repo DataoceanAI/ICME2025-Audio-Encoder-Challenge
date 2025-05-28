@@ -234,7 +234,7 @@
                     sortTable(tableId, index, direction);
                 });
             });
-            
+        }
             function sortTable(tableId, columnIndex, direction) {
                 const table = document.getElementById(tableId);
                 const tbody = table.querySelector('tbody');
@@ -266,8 +266,6 @@
                 // Re-add rows in sorted order
                 rows.forEach(row => tbody.appendChild(row));
             }
-        }
-
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
 		
@@ -288,14 +286,34 @@
             createDatasetHeaders('sheet2-table', data.sheet2.datasets);
             populateTable('sheet2-table', data.sheet2.encoders, data.sheet2.datasets);
             addSorting('sheet2-table', 3); // 4 fixed columns (company, team, report, avg)
+				
             })
             .catch(error => {
                 document.getElementById('loading').innerHTML = 
                     `<p style="color:red">加载失败: ${error.message}</p>`;
             });
 			
-           
+			setTimeout(() => { 
+				 // 找到 Weighted Averaged Score	 列的索引
+                const sheet1Headers = document.querySelectorAll('#sheet1-table th');
+                const sheet2Headers = document.querySelectorAll('#sheet2-table th');
+                
+                // Sheet1 的 Weighted Averaged Score	 列是第4列（索引4，因为前面有4个固定列）
+                const sheet1AsvIndex = 3;
+                const sheet1Header = sheet1Headers[sheet1AsvIndex];
+                sheet1Header.classList.add('sort-desc');
+                sortTable('sheet1-table', sheet1AsvIndex, 'desc');
+                
+                // Sheet2 的 Weighted Averaged Score	 列是第4列（索引4，因为前面有4个固定列）
+                const sheet2AsvIndex = 3;
+                const sheet2Header = sheet2Headers[sheet2AsvIndex];
+                sheet2Header.classList.add('sort-desc');
+                sortTable('sheet2-table', sheet2AsvIndex, 'desc');
+				
+			},100);
         });
+		
+		
     </script>
 </body>
 </html>
