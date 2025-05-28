@@ -31,7 +31,7 @@
     ],
     "encoders": [
       {
-        "company": "alibaba",
+        "company": "Alibaba",
         "team": "Aluminumbox",
         "report_link": "https://drive.google.com/file/d/1xPZkWQVUX2QbnI6Ftl0wtM3zM-_8PJqh/view?usp=drive_link",
         "weighted_avg": 0.807,
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "company": "bytedance",
+        "company": "ByteDance",
         "team": "GAEBT",
         "report_link": "https://drive.google.com/file/d/13WCT9BCjDjbirs1eQC0EOMOd-v58Fpg9/view?usp=drive_link",
         "weighted_avg": 0.86,
@@ -136,7 +136,7 @@
         ]
       },
       {
-        "company": "bytedance",
+        "company": "ByteDance",
         "team": "audiocodec",
         "report_link": "https://drive.google.com/file/d/1OIFY0-JUvTyxsIm8fS0ris5Eg5aEWHkB/view?usp=sharing",
         "weighted_avg": 0.865,
@@ -171,7 +171,7 @@
         ]
       },
       {
-        "company": "bytedance",
+        "company": "ByteDance",
         "team": "AudioX",
         "report_link": "https://drive.google.com/file/d/1ir6K-VgUhoGhsSrV9fKZTq3SMlPjzkIT/view?usp=drive_link",
         "weighted_avg": 0.836,
@@ -302,7 +302,7 @@
     ],
     "encoders": [
       {
-        "company": "alibaba",
+        "company": "Alibaba",
         "team": "Aluminumbox",
         "report_link": "https://drive.google.com/file/d/1xPZkWQVUX2QbnI6Ftl0wtM3zM-_8PJqh/view?usp=drive_link",
         "weighted_avg": 0.641,
@@ -330,7 +330,7 @@
         ]
       },
       {
-        "company": "bytedance",
+        "company": "ByteDance",
         "team": "GAEBT",
         "report_link": "https://drive.google.com/file/d/13WCT9BCjDjbirs1eQC0EOMOd-v58Fpg9/view?usp=drive_link",
         "weighted_avg": 0.782,
@@ -386,7 +386,7 @@
         ]
       },
       {
-        "company": "bytedance",
+        "company": "ByteDance",
         "team": "audiocodec",
         "report_link": "https://drive.google.com/file/d/1OIFY0-JUvTyxsIm8fS0ris5Eg5aEWHkB/view?usp=sharing",
         "weighted_avg": 0.792,
@@ -414,7 +414,7 @@
         ]
       },
       {
-        "company": "bytedance",
+        "company": "ByteDance",
         "team": "AudioX",
         "report_link": "https://drive.google.com/file/d/1ir6K-VgUhoGhsSrV9fKZTq3SMlPjzkIT/view?usp=drive_link",
         "weighted_avg": 0.778,
