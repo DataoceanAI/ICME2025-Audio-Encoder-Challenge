@@ -1,5 +1,8 @@
 # The IEEE International Conference on Multimedia & Expo (ICME) 2025 Audio Encoder Capability Challenge
 
+## 🔥 You can view the workshop PPT through the link below
+[https://drive.google.com/file/d/1VKCXdBsvDTRaJ0m5cZ9tqLoLYQSGcwZ7/view?usp=sharing](https://drive.google.com/file/d/1VKCXdBsvDTRaJ0m5cZ9tqLoLYQSGcwZ7/view?usp=sharing)
+
 ## 🏆 Challenge Results
 [https://dataoceanai.github.io/ICME2025-Audio-Encoder-Challenge/docs/result.html](https://dataoceanai.github.io/ICME2025-Audio-Encoder-Challenge/docs/result.html)
 
